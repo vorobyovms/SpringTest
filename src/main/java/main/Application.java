@@ -1,5 +1,6 @@
 package main;
 
+import controllers.AllCustomersControl;
 import controllers.AllPersonalControl;
 import controllers.TestInfo;
 import javax.persistence.EntityManager;
@@ -18,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@Import({ TestInfo.class, AllPersonalControl.class })
+@Import({ TestInfo.class, AllPersonalControl.class, AllCustomersControl.class })
 @EnableJpaRepositories("repositiries")
 @ComponentScan("Entity")
 @EntityScan("Entity")

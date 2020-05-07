@@ -9,7 +9,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "personal")
+@Table(name = "personal",schema = "public")
 public class Personal implements Serializable  {
 
     public Long getId() {
@@ -17,31 +17,31 @@ public class Personal implements Serializable  {
     }
 
     public String getFsl() {
-        return fsl;
+        return FSL;
     }
 
     public String getRightsNumbet() {
-        return rightsNumbet;
+        return rightsnumber;
     }
 
     public Long getSeriesStraight() {
-        return seriesStraight;
+        return seriesstraight;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setFsl(String fsl) {
-        this.fsl = fsl;
+    public void setFsl(String FSL) {
+        this.FSL = FSL;
     }
 
     public void setRightsNumbet(String rightsNumbet) {
-        this.rightsNumbet = rightsNumbet;
+        this.rightsnumber = rightsnumber;
     }
 
     public void setSeriesStraight(Long seriesStraight) {
-        this.seriesStraight = seriesStraight;
+        this.seriesstraight = seriesstraight;
     }
 
     @Id
@@ -49,12 +49,12 @@ public class Personal implements Serializable  {
     private Long id;
     
     @Column
-    private String fsl;
+    private String FSL;
     
     @Column
-    private String rightsNumbet;
+    private String rightsnumber;
     
     @Column
-    private Long seriesStraight;
+    private Long seriesstraight;
 
 }

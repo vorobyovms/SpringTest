@@ -17,6 +17,7 @@ public class AllPersonalControl {
     private PersonalRepository personalRepository;
     @GetMapping("/all/")
     public List<Personal> findAll() {
+        System.out.println("aanswer = " + personalRepository.findAll());
         return personalRepository.findAll();
     }
 

@@ -8,6 +8,8 @@ import repositiries.PersonalRepository;
 
 @Service
 
+//сервис персонал
+
 public class ServiceGetAllPersonal {
     
     @Autowired
