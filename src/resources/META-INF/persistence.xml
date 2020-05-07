@@ -15,6 +15,10 @@
     <persistence-unit name="Java">
         <description>Persistence Unit For test</description>
         <class>hibernate.model.Personal</class>
+        <class>hibernate.model.Vehicle</class>
+        <class>hibernate.model.Flight</class>
+        <class>hibernate.model.Customers</class>
+        <class>hibernate.model.Crew</class>
     </persistence-unit>
 
 </persistence>

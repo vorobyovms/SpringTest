@@ -8,6 +8,7 @@ package services;
 import Entity.Vehicle;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import repositiries.VehicleRepository;
 
@@ -28,4 +29,5 @@ public class ServiceGetAllVehicle {
     public List<Vehicle> findAll(){
         return vehicleRepository.findAll();
     }
+
 }

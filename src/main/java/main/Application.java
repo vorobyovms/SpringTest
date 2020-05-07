@@ -1,10 +1,10 @@
 package main;
 
-import controllers.AllCrewControl;
-import controllers.AllCustomersControl;
-import controllers.AllFlightControl;
-import controllers.AllPersonalControl;
-import controllers.AllVehicleControl;
+import controllers.CrewControl;
+import controllers.CustomersControl;
+import controllers.FlightControl;
+import controllers.PersonalControl;
+import controllers.VehicleControl;
 import controllers.TestInfo;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@Import({ TestInfo.class, AllPersonalControl.class, AllCustomersControl.class, AllVehicleControl.class, AllFlightControl.class, AllCrewControl.class })
+@Import({ TestInfo.class, PersonalControl.class, CustomersControl.class, VehicleControl.class, FlightControl.class, CrewControl.class })
 @EnableJpaRepositories("repositiries")
 @ComponentScan("Entity")
 @EntityScan("Entity")

@@ -45,6 +45,7 @@ public class Personal implements Serializable  {
     }
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
