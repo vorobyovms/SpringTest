@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import repositiries.VehicleRepository;
+import services.ServiceGetAllPersonal;
+import services.ServiceGetAllVehicle;
 
 /**
  *
@@ -96,6 +98,7 @@ public class VehicleControl {
                 
     }
     
+    //удаление по id - на вход дается JSONObject с параметром id
     @PostMapping(value = "/del_vehicle")
     @ResponseStatus(HttpStatus.CREATED)
     public boolean delvehicle(@RequestBody String input) {
@@ -113,6 +116,23 @@ public class VehicleControl {
         vehicleRepository.delete(from_optional);
         
         return true;
+    }
+    
+    //удаление по id - на вход дается JSONObject с параметром id через интерфейс 
+    @PostMapping(value = "/del_vehicle1")
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean delvehicle1(@RequestBody String input) {
+        ServiceGetAllVehicle service_ = new ServiceGetAllVehicle(vehicleRepository);
+        JSONParser parser = new JSONParser();
+        JSONObject jsonfrom = null;
+        try {
+            jsonfrom = (JSONObject) parser.parse(input);
+        } catch (ParseException ex) {
+            System.out.println("convert json error");
+        }
+        Long id_vehicle = Long.parseLong(String.valueOf(jsonfrom.get("id")));
+        boolean result = service_.DeleteById(id_vehicle);
+        return result;
     }
 
 }

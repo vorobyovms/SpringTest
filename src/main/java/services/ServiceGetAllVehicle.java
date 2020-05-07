@@ -7,6 +7,7 @@ package services;
 
 import Entity.Vehicle;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,14 @@ public class ServiceGetAllVehicle {
     
     public List<Vehicle> findAll(){
         return vehicleRepository.findAll();
+    }
+    
+    public boolean DeleteById(Long id){
+        Optional<Vehicle> ressql = vehicleRepository.findById(id);
+        Vehicle from_optional = ressql.get();
+        vehicleRepository.delete(from_optional);
+        
+        return true;
     }
 
 }
