@@ -9,15 +9,14 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author mihail
  */
+
 @Entity
-@Table(name = "customers",schema = "public")
-public class Customers implements Serializable {
+public class Crew implements Serializable {
 
     @Id
     private Long id;
@@ -30,28 +29,26 @@ public class Customers implements Serializable {
         this.id = id;
     }
 
-    public String getOkpo() {
-        return okpo;
+    public Long getFlight_id() {
+        return flight_id;
     }
 
-    public String getName() {
-        return name;
+    public Long getPersonal_idl() {
+        return personal_id;
     }
 
-    public void setOkpo(String okpo) {
-        this.okpo = okpo;
+    public void setFlight_id(Long flight_id) {
+        this.flight_id = flight_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPersonal_idl(Long personal_id) {
+        this.personal_id = personal_id;
     }
     
     @Column
-    private String okpo;
+    private Long flight_id;
     
     @Column
-    private String name;
-    
-    
-    
+    private Long personal_id;
+
 }

@@ -6,12 +6,10 @@
 package services;
 
 import Entity.Customers;
-import Entity.Personal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositiries.CustomerRepository;
-import repositiries.PersonalRepository;
 
 /**
  *

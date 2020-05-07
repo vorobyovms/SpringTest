@@ -1,5 +1,6 @@
 package main;
 
+import controllers.AllCrewControl;
 import controllers.AllCustomersControl;
 import controllers.AllFlightControl;
 import controllers.AllPersonalControl;
@@ -21,7 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@Import({ TestInfo.class, AllPersonalControl.class, AllCustomersControl.class, AllVehicleControl.class, AllFlightControl.class })
+@Import({ TestInfo.class, AllPersonalControl.class, AllCustomersControl.class, AllVehicleControl.class, AllFlightControl.class, AllCrewControl.class })
 @EnableJpaRepositories("repositiries")
 @ComponentScan("Entity")
 @EntityScan("Entity")

@@ -5,11 +5,12 @@
  */
 package services;
 
-import Entity.Vehicle;
+import Entity.Crew;
+import Entity.Personal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositiries.VehicleRepository;
+import repositiries.CrewRepository;
 
 /**
  *
@@ -17,15 +18,15 @@ import repositiries.VehicleRepository;
  */
 
 @Service
-public class ServiceGetAllVehicle {
+public class ServiceGetAllCrew {
     @Autowired
-    private final VehicleRepository vehicleRepository;
+    private final CrewRepository crewRepository;
     
-    public ServiceGetAllVehicle(VehicleRepository vehicleRepository){
-        this.vehicleRepository = vehicleRepository;
+    public ServiceGetAllCrew(CrewRepository crewRepository){
+        this.crewRepository = crewRepository;
     }
     
-    public List<Vehicle> findAll(){
-        return vehicleRepository.findAll();
+    public List<Crew> findAll(){
+        return crewRepository.findAll();
     }
 }

@@ -5,21 +5,23 @@
  */
 package services;
 
+import Entity.Flight;
 import Entity.Personal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repositiries.FlightRepository;
 
 @Service
 public class ServiceGetAllFlight {
     @Autowired
-    private final ServiceGetAllFlight flightRepository;
+    private final FlightRepository flightRepository;
     
-    public ServiceGetAllFlight(ServiceGetAllFlight flightRepository){
+    public ServiceGetAllFlight(FlightRepository flightRepository){
         this.flightRepository = flightRepository;
     }
     
-    public List<Personal> findAll(){
+    public List<Flight> findAll(){
         return flightRepository.findAll();
     }
 }
