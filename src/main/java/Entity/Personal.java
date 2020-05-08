@@ -8,6 +8,8 @@ package Entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+//персонал
+
 @Entity
 @Table(name = "personal",schema = "public")
 public class Personal implements Serializable  {

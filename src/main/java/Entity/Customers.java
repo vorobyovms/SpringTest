@@ -17,6 +17,9 @@ import javax.persistence.Table;
  *
  * @author mihail
  */
+
+//клиенты 
+
 @Entity
 @Table(name = "customers",schema = "public")
 public class Customers implements Serializable {

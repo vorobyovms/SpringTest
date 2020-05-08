@@ -20,14 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import repositiries.VehicleRepository;
-import services.ServiceGetAllPersonal;
 import services.ServiceGetAllVehicle;
 
 /**
  *
  * @author mihail
  */
-//ТРАНСПОРТ КОНТРОЛЛЕР
+//КОНТРОЛЛЕР транспорта
 @RestController
 
 @RequestMapping("/vehical")

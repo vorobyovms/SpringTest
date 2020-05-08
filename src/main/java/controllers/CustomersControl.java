@@ -20,6 +20,8 @@ import repositiries.CustomerRepository;
  * @author mihail
  */
 
+
+//контроллер клиентов
 @RestController
 
 @RequestMapping("/customers")

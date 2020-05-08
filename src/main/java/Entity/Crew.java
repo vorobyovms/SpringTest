@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author mihail
  */
 
-//сущность 
+//Экипаж
 
 @Entity
 public class Crew implements Serializable {

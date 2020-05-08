@@ -19,6 +19,7 @@ import javax.persistence.Table;
  * @author mihail
  */
 
+//Рейс
 
 @Entity
 @Table(name = "flight",schema = "public")

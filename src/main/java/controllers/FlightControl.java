@@ -20,6 +20,7 @@ import repositiries.FlightRepository;
  * @author mihail
  */
 
+//контроллер рейсов
 @RestController
 
 @RequestMapping("/flight")
