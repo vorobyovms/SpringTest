@@ -61,7 +61,7 @@ public class FlightControl {
             jsonfrom = (JSONObject) parser.parse(input);
             String fdate = String.valueOf(jsonfrom.get("date"));
             Long vehicle_id = Long.parseLong(String.valueOf(jsonfrom.get("vehicle_id")));  //Это id транспорта
-            String from_ = String.valueOf(jsonfrom.get("from"));
+            //String from_ = String.valueOf(jsonfrom.get("from"));
             String to = String.valueOf(jsonfrom.get("to"));
             String end_date = String.valueOf(jsonfrom.get("end_date"));
             //Time format
