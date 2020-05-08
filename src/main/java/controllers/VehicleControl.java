@@ -35,7 +35,6 @@ public class VehicleControl {
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    
     //получить список всех транспортных средств
     @GetMapping("/all/")
     @ResponseStatus(HttpStatus.CREATED)
@@ -61,77 +60,93 @@ public class VehicleControl {
         Vehicle from_optional = ressql.get();
         return from_optional;
     }
-    
+
     //добавление транспорта
     /*
        {"name":"Volva1","mile_age":500000.0,"carrying_capacity":600,"year_issue":2012,"engine_volume":100.0}
-    */
-
+     */
     @PostMapping(value = "/add_vehicle")
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean addvehicle(@RequestBody String input) {
+    public JSONObject addvehicle(@RequestBody String input) {
         JSONParser parser = new JSONParser();
         JSONObject jsonfrom = null;
+        boolean resoper = false;
+        JSONObject forreturn = new JSONObject();
+        forreturn.clear();
         try {
             jsonfrom = (JSONObject) parser.parse(input);
+            String name = String.valueOf(jsonfrom.get("name"));
+            Double mile_age = Double.parseDouble(String.valueOf(jsonfrom.get("mile_age")));
+            Long carrying_capacity = Long.parseLong(String.valueOf(jsonfrom.get("carrying_capacity")));
+            Long year_issue = Long.parseLong(String.valueOf(jsonfrom.get("year_issue")));
+            Double engine_volume = Double.parseDouble(String.valueOf(jsonfrom.get("engine_volume")));
+
+            //сохранение
+            Vehicle vhcl = new Vehicle();
+            vhcl.setEngine_volume(engine_volume);
+            vhcl.setYear_issue(year_issue);
+            vhcl.setCarrying_capacity(carrying_capacity);
+            vhcl.setMile_age(mile_age);
+            vhcl.setName(name);
+            vehicleRepository.save(vhcl);
+            resoper = true;
+            forreturn.put("operation", resoper);
         } catch (ParseException ex) {
             System.out.println("convert json error");
+            forreturn.put("operation", resoper);
         }
-        
-        String name = String.valueOf(jsonfrom.get("name"));
-        Double mile_age = Double.parseDouble(String.valueOf(jsonfrom.get("mile_age")));
-        Long carrying_capacity = Long.parseLong(String.valueOf(jsonfrom.get("carrying_capacity")));
-        Long year_issue = Long.parseLong(String.valueOf(jsonfrom.get("year_issue")));
-        Double engine_volume = Double.parseDouble(String.valueOf(jsonfrom.get("engine_volume")));
-        
-        //сохранение
-        Vehicle vhcl = new Vehicle();
-        vhcl.setEngine_volume(engine_volume);
-        vhcl.setYear_issue(year_issue);
-        vhcl.setCarrying_capacity(carrying_capacity);
-        vhcl.setMile_age(mile_age);
-        vhcl.setName(name);
-        vehicleRepository.save(vhcl);
-        
-        return true;
-                
+
+        return forreturn;
+
     }
-    
+
     //удаление по id - на вход дается JSONObject с параметром id
     @PostMapping(value = "/del_vehicle")
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean delvehicle(@RequestBody String input) {
+    public JSONObject delvehicle(@RequestBody String input) {
         JSONParser parser = new JSONParser();
         JSONObject jsonfrom = null;
+        boolean resoper = false;
+        JSONObject forreturn = new JSONObject();
+        forreturn.clear();
         try {
             jsonfrom = (JSONObject) parser.parse(input);
+            Long id_vehicle = Long.parseLong(String.valueOf(jsonfrom.get("id")));
+            Optional<Vehicle> ressql = vehicleRepository.findById(id_vehicle);
+            Vehicle from_optional = ressql.get();
+            vehicleRepository.delete(from_optional);
+            resoper = true;
+            forreturn.put("operation", resoper);
         } catch (ParseException ex) {
-            System.out.println("convert json error");
+            System.out.println("convert json error" + ex);
+            forreturn.put("operation", resoper);
         }
-        
-        Long id_vehicle = Long.parseLong(String.valueOf(jsonfrom.get("id")));
-        Optional<Vehicle> ressql = vehicleRepository.findById(id_vehicle);
-        Vehicle from_optional = ressql.get();
-        vehicleRepository.delete(from_optional);
-        
-        return true;
+
+        return forreturn;
     }
-    
+
     //удаление по id - на вход дается JSONObject с параметром id через интерфейс 
     @PostMapping(value = "/del_vehicle1")
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean delvehicle1(@RequestBody String input) {
+    public JSONObject delvehicle1(@RequestBody String input) {
         ServiceGetAllVehicle service_ = new ServiceGetAllVehicle(vehicleRepository);
         JSONParser parser = new JSONParser();
         JSONObject jsonfrom = null;
+        boolean resoper = false;
+        JSONObject forreturn = new JSONObject();
+        forreturn.clear();
         try {
             jsonfrom = (JSONObject) parser.parse(input);
+            Long id_vehicle = Long.parseLong(String.valueOf(jsonfrom.get("id")));
+            boolean result = service_.DeleteById(id_vehicle);
+            forreturn.put("operation", result);
         } catch (ParseException ex) {
             System.out.println("convert json error");
+            forreturn.put("operation", resoper);
         }
-        Long id_vehicle = Long.parseLong(String.valueOf(jsonfrom.get("id")));
-        boolean result = service_.DeleteById(id_vehicle);
-        return result;
+        
+        return forreturn;
+
     }
 
 }
